@@ -22,7 +22,7 @@ public function index()
 */
 public function create()
 {
-    //
+    return view('user.create');
 }
 /**
 * Store a newly created resource in storage.
@@ -30,7 +30,14 @@ public function create()
 */
 public function store(Request $request)
 {
-    //
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:6',
+    ]);
+
+    $user = User::create($validated);
+    return redirect()->route('user.index')->with('success', 'User created successfully');
 }
 /**
 * Display the specified resource.

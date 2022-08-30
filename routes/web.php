@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 //route brup by user
 Route::prefix('user')->group(function(){
-    Route::post('/', [UserController::class, 'store']);
+    Route::post('/', [UserController::class, 'store'])->name('user.store');
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
     Route::get('/{id}/edit', [UserController::class, 'edit']);
