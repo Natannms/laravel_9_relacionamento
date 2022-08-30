@@ -14,30 +14,73 @@
     <div class="navbar bg-base-300">
         <a class="btn btn-ghost normal-case text-xl">Users</a>
     </div>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto w-full">
         <table class="table w-full">
-            <!-- head -->
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Job</th>
-                    <th>Favorite Color</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <th>#{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td class="btn btn-primary"> <a href="{{ route('user.show', $user->id)}}">Ver posts</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- row 1 -->
+            @foreach ($Users as $key=> $User)
+            <tr>
+                <th>
+                  <label>
+                    <input type="checkbox" class="checkbox" />
+                  </label>
+                </th>
+                <td>
+                    {{ $User->id }}
+                </td>
+                <td>
+                  <div class="flex items-center space-x-3">
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                      </div>
+                    </div>
+                    <div>
+                      <div class="font-bold">{{ $User->name }}</div>
+                      {{-- <div class="text-sm opacity-50">United States</div> --}}
+                    </div>
+                  </div>
+                </td>
+                <td>
+                    {{ $User->email }}
+                  <br>
+                  {{-- <span class="badge badge-ghost badge-sm">Desktop Support Technician</span> --}}
+                </td>
+                <th>
+                  <a href="{{ route('user.show', $User->id) }}" class="btn btn-ghost btn-xs">Posts</a>
+                </th>
+              </tr>
+            @endforeach
+
+          </tbody>
+          <!-- foot -->
+          <tfoot>
+            <tr>
+                <th>
+                  </th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th></th>
+            </tr>
+          </tfoot>
+
         </table>
-    </div>
+      </div>
 </body>
 
 </html>

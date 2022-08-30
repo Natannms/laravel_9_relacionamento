@@ -13,8 +13,8 @@ class UserController extends Controller
 */
 public function index()
 {
-    $users = User::all();
-    return view('user.index', compact('users'));
+    $Users = User::all();
+    return view('user.index')->with('Users', $Users);
 }
 /**
 * Show the form for creating a new resource.

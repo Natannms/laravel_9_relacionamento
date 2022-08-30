@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,16 @@ Route::prefix('user')->group(function(){
     Route::get('/{id}/edit', [UserController::class, 'edit']);
     Route::post('/{id}', [UserController::class, 'update']);
     Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
+Route::prefix('posts')->group(function(){
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/{id}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::post('/{id}/update', [PostController::class, 'update'])->name('posts.update');
+    Route::delete('/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 Route::get('/', function () {
