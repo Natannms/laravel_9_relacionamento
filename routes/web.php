@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 //route brup by user
 Route::prefix('user')->group(function(){
     Route::post('/', [UserController::class, 'store']);
-    Route::get('/', [UserController::class, 'index']);
-    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/', [UserController::class, 'index'])->name('user.index');
+    Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
     Route::get('/{id}/edit', [UserController::class, 'edit']);
     Route::post('/{id}', [UserController::class, 'update']);
     Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
