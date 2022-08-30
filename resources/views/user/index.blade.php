@@ -11,9 +11,15 @@
 </head>
 
 <body class="antialiased">
+
     <div class="navbar bg-base-300">
         <a class="btn btn-ghost normal-case text-xl">Users</a>
     </div>
+    <div class="navbar bg-base-300">
+        {{ $Users->links() }}
+    </div>
+
+
     <div class="overflow-x-auto w-full">
         <table class="table w-full">
           <!-- head -->
